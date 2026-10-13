@@ -59,6 +59,7 @@ yarn-error.log*
 .env.*.local
 
 # IDE / OS
+git_push.bat
 .vscode/
 .idea/
 .DS_Store
