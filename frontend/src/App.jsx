@@ -4,11 +4,8 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import SyllabusUpload from './pages/SyllabusUpload';
 import GeneratorWizard from './pages/GeneratorWizard';
-import QuestionBank from './pages/QuestionBank';
 import PaperRepository from './pages/PaperRepository';
-import ModerationReview from './pages/ModerationReview';
 import UserManagement from './pages/UserManagement';
-import SystemSettings from './pages/SystemSettings';
 import QuizManager from './pages/QuizManager';
 import TakeQuiz from './pages/TakeQuiz';
 import LoginPage from './pages/LoginPage';
@@ -131,16 +128,13 @@ export default function App() {
               setActiveTab={setActiveTab}
             />
           )}
-          {activeTab === 'questions' && <QuestionBank />}
           {activeTab === 'repository' && (
             <PaperRepository 
               setActiveTab={setActiveTab}
               onOpenQuiz={(code) => setActiveQuizCode(code)}
             />
           )}
-          {activeTab === 'moderation' && <ModerationReview currentUser={currentUser} />}
           {activeTab === 'users' && <UserManagement currentUser={currentUser} />}
-          {activeTab === 'settings' && <SystemSettings />}
         </main>
       </div>
     </div>

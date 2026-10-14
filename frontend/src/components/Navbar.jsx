@@ -29,7 +29,7 @@ export default function Navbar({ currentUser, onSwitchUser, activeTab, setActive
                 </span>
               </div>
               <p className="text-xs text-slate-500 hidden sm:block">
-                AI Question Paper Generation & Question Bank Management System
+                AI Question Paper & Quiz Generation Platform
               </p>
             </div>
           </div>
@@ -38,9 +38,7 @@ export default function Navbar({ currentUser, onSwitchUser, activeTab, setActive
           <div className="flex items-center space-x-3">
             {/* Active AI Engine Badge */}
             <div 
-              onClick={() => setActiveTab('settings')}
-              className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium cursor-pointer transition border border-slate-200"
-              title="Click to configure AI API keys"
+              className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200"
             >
               <Cpu className="w-3.5 h-3.5 text-indigo-600" />
               <span>AI Engine:</span>

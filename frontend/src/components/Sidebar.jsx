@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
-  LayoutDashboard, BookOpen, Wand2, Database, 
-  Files, CheckSquare, Users, Sliders, ShieldCheck, HelpCircle, Sparkles
+  LayoutDashboard, BookOpen, Wand2, 
+  Files, Users, ShieldCheck, HelpCircle
 } from 'lucide-react';
 
 export default function Sidebar({ activeTab, setActiveTab, currentUser }) {
@@ -10,11 +10,8 @@ export default function Sidebar({ activeTab, setActiveTab, currentUser }) {
     { id: 'syllabus', label: 'Syllabus & RAG Hub', icon: BookOpen },
     { id: 'generator', label: 'AI Paper Generator', icon: Wand2, highlight: true },
     { id: 'quizzes', label: 'Quiz Links & Tests', icon: HelpCircle, badge: 'Live' },
-    { id: 'questions', label: 'Question Bank Manager', icon: Database },
     { id: 'repository', label: 'Exam Papers Repository', icon: Files },
-    { id: 'moderation', label: 'Board Moderation', icon: CheckSquare, badge: 'Review' },
     { id: 'users', label: 'Role & User Access', icon: Users, adminOnly: true },
-    { id: 'settings', label: 'AI Engine & Settings', icon: Sliders },
   ];
 
   return (
@@ -70,8 +67,8 @@ export default function Sidebar({ activeTab, setActiveTab, currentUser }) {
         </p>
         <p className="text-[11px] text-slate-500 mt-1">
           {currentUser?.role === 'administrator' && 'Full system control, users & audit logs'}
-          {currentUser?.role === 'paper_setter' && 'Can upload syllabus, generate papers & manage question bank'}
-          {currentUser?.role === 'moderator' && 'Authorized to review, approve & reject papers'}
+          {currentUser?.role === 'paper_setter' && 'Can upload syllabus & generate AI examination papers'}
+          {currentUser?.role === 'moderator' && 'Authorized to review and access generated papers'}
         </p>
       </div>
     </aside>

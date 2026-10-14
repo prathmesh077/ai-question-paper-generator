@@ -68,8 +68,8 @@ export default function ThreeDSlides({ setActiveTab, isCompact = false }) {
       phase: 'Step 03 • AI Synthesis & Scan',
       title: 'Step 3: AI Paper Generation & Anti-Duplicate Scan',
       subtitle: 'Gemini AI generates questions and answers while Levenshtein and Bigram similarity algorithms scan historical 5-year archives to eliminate repeats.',
-      targetTab: 'questions',
-      btnText: 'Inspect Step 3: Question Bank',
+      targetTab: 'generator',
+      btnText: 'Inspect Step 3: AI Paper Generator',
       accentColor: 'from-purple-600 via-indigo-700 to-rose-700',
       badgeColor: 'bg-purple-950/80 text-purple-300 border-purple-500/40',
       metrics: [
@@ -87,11 +87,11 @@ export default function ThreeDSlides({ setActiveTab, isCompact = false }) {
     {
       id: 'step4',
       stepNumber: 4,
-      phase: 'Step 04 • Quality & Board Review',
-      title: 'Step 4: Examination Board Moderation',
-      subtitle: 'Authorized exam board moderators review paper drafts, verify difficulty balance, and approve papers with cryptographic audit logging.',
-      targetTab: 'moderation',
-      btnText: 'Open Step 4: Moderation Review',
+      phase: 'Step 04 • Quality & Exam Verification',
+      title: 'Step 4: Examination Review & Archival',
+      subtitle: 'Review paper drafts, verify difficulty balance, and store examination papers with complete versioning.',
+      targetTab: 'repository',
+      btnText: 'Open Step 4: Paper Repository',
       accentColor: 'from-amber-600 via-orange-600 to-indigo-800',
       badgeColor: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
       metrics: [

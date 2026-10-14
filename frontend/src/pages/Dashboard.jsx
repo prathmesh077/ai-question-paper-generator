@@ -95,16 +95,16 @@ export default function Dashboard({ setActiveTab }) {
         {/* Total Questions */}
         <Interactive3DCard glowColor="indigo" delayMs={60} className="p-5">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-500">Master Question Bank</span>
+            <span className="text-xs font-semibold text-slate-500">Curated Question Base</span>
             <div data-depth="true" className="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-xs transition-transform border border-indigo-100">
               <Database className="w-4 h-4" />
             </div>
           </div>
           <p data-depth="true" className="text-2xl font-bold text-slate-900 mt-2 transition-transform">{metrics?.total_questions || 0}</p>
           <div className="flex items-center justify-between text-[11px] text-slate-500 mt-2 pt-2 border-t border-slate-100">
-            <span>{metrics?.total_banks || 0} Subject Banks</span>
-            <span className="text-indigo-600 font-semibold cursor-pointer hover:underline" onClick={() => setActiveTab('questions')}>
-              Manage &rarr;
+            <span>{metrics?.total_banks || 0} Subject Sets</span>
+            <span className="text-indigo-600 font-semibold cursor-pointer hover:underline" onClick={() => setActiveTab('generator')}>
+              Generate &rarr;
             </span>
           </div>
         </Interactive3DCard>
