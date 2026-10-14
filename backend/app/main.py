@@ -48,7 +48,7 @@ app.add_middleware(
 # Static file serving for exports
 app.mount("/static/exports", StaticFiles(directory=settings.EXPORT_DIR), name="exports")
 
-# Include Routers
+# Include Routers with /api prefix (standard public routing)
 app.include_router(auth_router, prefix="/api")
 app.include_router(syllabus_router, prefix="/api")
 app.include_router(questions_router, prefix="/api")
@@ -57,8 +57,18 @@ app.include_router(papers_router, prefix="/api")
 app.include_router(analytics_router, prefix="/api")
 app.include_router(quizzes_router, prefix="/api")
 
+# Also include routers without /api prefix (handles Vercel / proxy prefix stripping)
+app.include_router(auth_router)
+app.include_router(syllabus_router)
+app.include_router(questions_router)
+app.include_router(generator_router)
+app.include_router(papers_router)
+app.include_router(analytics_router)
+app.include_router(quizzes_router)
+
 
 @app.get("/api/health")
+@app.get("/health")
 def health():
     return {
         "system": settings.PROJECT_NAME,
