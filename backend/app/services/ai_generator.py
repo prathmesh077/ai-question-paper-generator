@@ -30,8 +30,17 @@ class AIGeneratorService:
         prompt: str,
         api_key: str
     ) -> Optional[str]:
-        """Calls Google Gemini REST API using httpx."""
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        """Calls Google Gemini REST API using httpx with automatic model fallbacks."""
+        configured_model = os.getenv("GEMINI_MODEL", "").strip()
+        candidate_models = [m for m in [
+            configured_model,
+            "gemini-3.5-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-flash-lite-latest",
+            "gemini-2.5-flash-lite",
+            "gemini-1.5-flash"
+        ] if m]
+
         payload = {
             "contents": [{
                 "parts": [{"text": prompt}]
@@ -45,14 +54,20 @@ class AIGeneratorService:
         }
         try:
             async with httpx.AsyncClient(timeout=45.0) as client:
-                res = await client.post(url, json=payload)
-                if res.status_code == 200:
-                    data = res.json()
-                    candidates = data.get("candidates", [])
-                    if candidates and "content" in candidates[0]:
-                        parts = candidates[0]["content"].get("parts", [])
-                        if parts:
-                            return parts[0].get("text", "")
+                for model_name in candidate_models:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+                    try:
+                        res = await client.post(url, json=payload)
+                        if res.status_code == 200:
+                            data = res.json()
+                            candidates = data.get("candidates", [])
+                            if candidates and "content" in candidates[0]:
+                                parts = candidates[0]["content"].get("parts", [])
+                                if parts:
+                                    return parts[0].get("text", "")
+                    except Exception as model_err:
+                        print(f"Gemini model {model_name} invocation error: {model_err}")
+                        continue
         except Exception as e:
             print(f"Gemini API invocation error: {e}")
         return None
