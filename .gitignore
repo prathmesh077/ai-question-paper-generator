@@ -60,6 +60,7 @@ yarn-error.log*
 
 # IDE / OS
 git_push.bat
+push_to_github.ps1
 .vscode/
 .idea/
 .DS_Store
