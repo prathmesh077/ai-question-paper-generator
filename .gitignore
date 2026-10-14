@@ -57,6 +57,8 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+env.local
+*.local
 
 # IDE / OS
 git_push.bat
